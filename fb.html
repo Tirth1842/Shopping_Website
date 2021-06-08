@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="1039913199321-idvpc8bgiegacble06f1lp73l88g1ob7.apps.googleusercontent.com">
+    <title>Document</title>
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="shopping.js"></script>
+    <script src="google.js"></script>
+    <script src="facebook.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+</head>
+<style>
+    .login{
+        margin-top: 200px;
+        margin-left: 400px;
+    }
+    .fb {
+  margin-left: 95px;
+  width: 120px;
+  background-color: #3B5998;
+  color: white;
+  border-radius:6px;
+}
+.fb:hover{
+  border-radius:6px;
+  color: black;
+}
+</style>
+<body>
+   <!-- Display login status -->
+<div id="status"></div>
+
+<!-- Facebook login or logout button -->
+<a href="javascript:void(0);" onclick="fbLogin();" id="fbLink"><button id='fb' class="fb">Facebook</button>
+
+<!-- Display user's profile info -->
+<div class="ac-data" id="userData"></div>
+
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+</body>
+
+
+</html>

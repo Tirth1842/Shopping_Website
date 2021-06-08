@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="1039913199321-5qn4l94hp1e4qqbmqsnf469dlqocfpe3.apps.googleusercontent.com">
+    <title>Document</title>
+
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js" integrity="sha256-/H4YS+7aYb9kJ5OKhFYPUjSJdrtV6AeyJOtTkw6X72o=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="shopping.js"></script>
+    <script src="google.js"></script>
+    <script src="facebook.js"></script>
+    
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    
+</head>
+
+    
+<style>
+    @import url('https://fonts.googleapis.com/css?family=Roboto');
+    body {
+  background:linear-gradient(to right, #78a7ba 0%, #385D6C 50%, #78a7ba 99%);
+}
+.signup-form {
+  font-family: "Roboto", sans-serif;
+  width:400px;
+  height: 400px;
+  margin:30px auto;
+  background:linear-gradient(to right, #ffffff 0%, #fafafa 50%, #ffffff 99%);
+  border-radius: 10px;
+}
+.form-header  {
+  background-color: #EFF0F1;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+.form-header h1 {
+  font-size: 30px;
+  text-align:center;
+  color:#666;
+  padding:20px 0;
+  border-bottom:1px solid #cccccc;
+}
+.form-group{
+  margin-bottom:20px;
+}
+.form-body .form-input {
+    font-size: 17px;
+    box-sizing: border-box;
+    width: 100%;
+    height: 34px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #333333;
+    text-align: left;
+    border: 1px solid #d6d6d6;
+    border-radius: 4px;
+    background: white;
+    outline: none;
+}
+.label-title {
+  
+  color:#1BBA93;
+  font-size: 17px;
+  font-weight: bold;
+}
+.form-body {
+  padding:10px 40px;
+  color:#666;
+}
+
+.form-group{
+  margin-bottom:20px;
+}
+.btn-1 {
+    margin-left:110px;
+   display:inline-block;
+   padding:10px 20px;
+   background-color: #1BBA93;
+   font-size:17px;
+   border:none;
+   border-radius:5px;
+   color:#bcf5e7;
+   cursor:pointer;
+}
+
+.btn-1:hover {
+  background-color: #169c7b;
+  color:white;
+}
+.fb {
+  width: 120px;
+  margin-left: 95px;
+  background-color: #3B5998;
+  color: white;
+}
+.google {
+  width: 200px;
+  margin-left: 100px;
+  background-color: #dd4b39;
+  color: white;
+}
+.Or{
+  text-align: center;
+}
+.g-signin2
+{
+  margin-left: 95px;
+}
+</style>
+<body>
+  
+    
+       
+       <form class="signup-form" action="/register" method="post">
+
+     
+       <div class="form-header">
+        <h1>Login</h1>
+       </div>
+
+      
+      <div class="form-body">
+
+        
+
+        <!-- Email -->
+        <div class="form-group">
+          
+          <input type="email" id="email" class="form-input" placeholder="Email Address" required="required">
+        </div>
+        <div class="form-group">
+          
+            <input type="password" id="password" class="form-input" placeholder="password" required="required">
+        </div>
+          
+        <div class="Or">
+          OR
+        </div>
+           
+         
+         
+       
+        
+        <div class="form-group">
+          
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+        </div>
+        
+        <div class="form-group">
+          
+            <a href="javascript:void(0);" " id="fbLink"><button id='fb' onclick="fbLogin();" class="fb">Facebook</button></a>
+        </div>
+        
+          
+       
+        <div>
+          <input type="button" value="Sign In" id="Signin" class="btn-1">
+      </div>
+    </div>
+    
+    </form>
+    
+    
+<script>
+  $(document).ready(function(){
+
+    function decryption(encrypted_password)
+    {
+      var decrypted = CryptoJS.AES.decrypt(encrypted_password, "Secret Passphrase");
+      return decrypted.toString(CryptoJS.enc.Utf8);
+    }
+    $("#Signin").click(function(e){
+       sessionStorage.setItem("logout", "normal")
+      let count=0;
+      let email = $("#email").val();
+      let password = $("#password").val();
+      //var encrypted = CryptoJS.AES.encrypt(password, "Secret Passphrase");
+      fetch("./User_details.json")
+        .then((apidata)=>{
+                        console.log(apidata);
+                        return apidata.json();
+                        }).then((actualdata) =>{
+                
+                 for(let x in actualdata)
+                    {
+                       if(actualdata[x].Email==email && decryption(actualdata[x].Password)==password)
+                       {
+                         if(actualdata[x].User=="Member")
+                         {
+                          alert("login successful");
+                         count++;
+                         window.location.replace( "shopping.html");
+                         return false;
+                         }
+                         else if(actualdata[x].User=="Admin")
+                         {
+                           count++;
+                           window.location.href = "Admin.html";
+                         return false;
+                         }
+                         
+                       }
+                       
+                  
+                    }
+                    if(count==0)
+                    {
+                      alert("login failed");
+                    }
+                        }).catch((error) =>{
+                            console.log(error);
+                        });
+      
+      
+        });
+        
+       
+        
+       
+  });
+   
+</script>
+</html>

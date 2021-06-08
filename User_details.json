@@ -1,0 +1,24 @@
+[
+    {
+        
+        "Email":"tirthpatel.1842000@gmail.com",
+        "Password":"U2FsdGVkX199nzGwPdDt54+RMjH4QlJm387vNrBzAPA=",
+        "User":"Member",
+        "First_name":"Tirth",
+        "Last_name":"Patel"
+    },
+    {
+        "Email":"helloworld@gmail.com",
+        "Password":"U2FsdGVkX1/y7UfU5XeZRYr5f3crrLMI2MNCrEUBvMw=",
+        "User":"Admin",
+        "First_name":"hello",
+        "Last_name":"world"
+    },
+    {
+        "Email":"jethalal@gmail.com",
+        "Password":"U2FsdGVkX1/n7YzuNseLOtQIvtzTg9JbaCC/rPRN/k4=",
+        "User":"Member",
+        "First_name":"Champak",
+        "Last_name":"Chacha"
+    }
+]

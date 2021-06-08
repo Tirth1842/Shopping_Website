@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-signin-client_id" content="1039913199321-5qn4l94hp1e4qqbmqsnf469dlqocfpe3.apps.googleusercontent.com">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="bootstrap.min.css" /> -->
+    <script
+    src="https://code.jquery.com/jquery-3.6.0.js"
+    integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="shopping.js"></script>
+    <script src="google.js"></script>
+    <script src="facebook.js"></script>
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
+<!-- <script src="jquery.slim.min.js"></script>
+<script src="popper.min.js"></script>
+<script src="bootstrap.min.js"></script> -->
+    <title>Document</title>
+</head>
+<style>
+    .vertical-nav {
+  min-width: 17rem;
+  width: 17rem;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s;
+}
+
+.page-content {
+  width: calc(100% - 17rem);
+  margin-left: 17rem;
+  transition: all 0.4s;
+}
+
+/* for toggle behavior */
+
+#sidebar.active {
+  margin-left: -17rem;
+}
+
+#content.active {
+  width: 100%;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  #sidebar {
+    margin-left: -17rem;
+  }
+  #sidebar.active {
+    margin-left: 0;
+  }
+  #content {
+    width: 100%;
+    margin: 0;
+  }
+  #content.active {
+    margin-left: 17rem;
+    width: calc(100% - 17rem);
+  }
+  
+}
+.totalusers{
+
+    margin-left: 700px;
+    font-family: sans-serif;
+    background-color:blanchedalmond;
+    box-sizing:border-box;
+    border-radius: 6px;
+    
+}
+.category{
+  color: aquamarine;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.tshirt:hover{
+  text-shadow: coral;
+  
+}
+</style>
+<body>
+    <div class="vertical-nav bg-dark" id="sidebar">
+        <div class="py-4 px-3 mb-4 bg-dark">      
+          <div class="media-body">
+            <h4 class="font-weight-white text-muted mb-0">Admin Page</h4>
+          </div>      
+        </div>
+      
+        
+      
+        <ul class="nav flex-column bg-dark mb-0">
+          <li class="nav-item" id="U">
+            <a href="#" class="nav-link text-light font-italic bg-dark" >
+              Users Details
+            </a>
+          </li>
+          <li class="nav-item" id="P">
+            <a href="#" class="nav-link text-light font-italic bg-dark">
+              Product Details
+              
+            </a>
+            
+          </li>
+          <div id="category">
+            <ul class="category">
+              <li><a href="#" id="tshirt">T-Shirt</a></li>
+              <li><a href="#" id="shirt">Shirt</a></li>
+              <li><a href="#" id="jeans">Jeans</a></li>
+            </ul>
+          </div>
+          <li class="nav-item">
+            <a href="#" class="nav-link text-light font-italic bg-dark" id="signout">
+            Sign Out
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="page-content p-5" id="content">
+
+        <!-- Toggle button -->
+        <button id="sidebarCollapse" type="button" class="btn btn-dark bg-dark rounded-pill shadow-sm px-4 mb-4">
+            <small class="text-uppercase font-weight-bold">Toggle</small>
+          
+          </button>
+        <div id="users">
+            
+              <span class="totalusers"><b>Total Users:  </b></span><span id="total"></span>
+            <table class="table table-hover" id="add_row">
+                <thead>
+                  <tr>
+                      <th>
+                          Sr.No
+                      </th>
+                    
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>
+                        Email Id
+                    </th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  
+                </tbody>
+              </table>
+        </div>
+        <!-- <div id="product"> -->
+          <div id="TS">
+            <h4><U>T-Shirts</U></h4>
+
+            <table class="table table-hover" id="add_tshirt">
+              <thead>
+                <tr>
+                    <th>
+                        Sr.No
+                    </th>
+                  
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>
+                      Quantity
+                  </th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+          <div id="S">
+            <h4><U>Shirts</U></h4>
+
+            <table class="table table-hover" id="add_shirt">
+              <thead>
+                <tr>
+                    <th>
+                        Sr.No
+                    </th>
+                  
+                  <th>Product Name</th>
+                  <th>Price</th>
+                  <th>
+                      Quantity
+                  </th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                
+              </tbody>
+            </table>
+          </div>
+        <!-- </div> -->
+        <div id="J">
+          <h4><U>Jeans</U></h4>
+
+          <table class="table table-hover" id="add_jeans">
+            <thead>
+              <tr>
+                  <th>
+                      Sr.No
+                  </th>
+                
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>
+                    Quantity
+                </th>
+                
+              </tr>
+            </thead>
+            <tbody>
+              
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      
+</body>
+<script>
+    
+    $(document).ready(function() {
+      $("#TS").hide();
+        $("#users").hide();
+        $("#category").hide();
+        $("P").hide();
+        $("#S").hide();
+        $("#J").hide();
+  $('#sidebarCollapse').on('click', function() {
+    $('#sidebar, #content').toggleClass('active');
+  });
+
+  $("#U").click(function(){
+      var srno=0;
+ 
+    $("#users").show();
+    $("#TS").hide();
+    $("#S").hide();
+    $("#J").hide();
+   
+      $("#add_row").children().next().children().remove();
+        fetch("./User_details.json")
+        .then((apidata)=>{
+                        console.log(apidata);
+                        return apidata.json();
+                        }).then((actualdata) =>{
+                
+                 for(let x in actualdata)
+                    {
+
+                      if(actualdata[x].User=="Member"){
+                        srno++;
+                        $("#add_row").append("<tr><td>"+srno+"</td><td>"+actualdata[x].First_name+"</td><td>" + actualdata[x].Last_name + "</td><td>" + actualdata[x].Email + "</td></tr>");
+                      }
+                       
+                       
+                  
+                    }
+                    $("#total").html(srno);
+                    
+                        }).catch((error) =>{
+                            console.log(error);
+                        });
+            
+   
+   
+  });
+
+  $("#P").click(function(){
+    $("#category").toggle();
+    
+   });
+    $("#tshirt").click(function(){
+      $("#TS").show();
+      $("#S").hide();
+      $("#users").hide();
+      $("#J").hide();
+      var srno1=0;
+      $("#add_tshirt").children().next().children().remove();
+        fetch("./catproduct.json")
+        .then((apidata)=>{
+                        console.log(apidata);
+                        return apidata.json();
+                        }).then((actualdata) =>{
+                
+                 for(let x in actualdata)
+                    { 
+                      if(x=="catid_1")
+                      {
+                        for(let y in actualdata.catid_1)
+                        {
+                          srno1++;
+                          $("#add_tshirt").append("<tr><td>"+srno1+"</td><td>"+actualdata.catid_1[y].pname+"</td><td>"+'₹'+ actualdata.catid_1[y].price + "</td><td>"+ actualdata.catid_1[y].quantity + "</td>");
+                        }
+                      }
+                  
+                    }
+
+                    
+                        }).catch((error) =>{
+                            console.log(error);
+                        });
+            
+            
+  });
+  $("#shirt").click(function(){
+     // $("#product").show();
+     $("#TS").hide();
+      $("#S").show();
+      $("#users").hide();
+      $("#J").hide();
+      
+      
+      var srno1=0;
+      $("#add_shirt").children().next().children().remove();
+        fetch("./catproduct.json")
+        .then((apidata)=>{
+                        console.log(apidata);
+                        return apidata.json();
+                        }).then((actualdata) =>{
+                
+                 for(let x in actualdata)
+                    { 
+                      if(x=="catid_2")
+                      {
+                        for(let y in actualdata.catid_2)
+                        {
+                          srno1++;
+                          $("#add_shirt").append("<tr><td>"+srno1+"</td><td>"+actualdata.catid_2[y].pname+"</td><td>"+'₹'+ actualdata.catid_2[y].price + "</td><td>"+ actualdata.catid_2[y].quantity + "</td>");
+                        }
+                      }
+                  
+                    }
+
+                    
+                        }).catch((error) =>{
+                            console.log(error);
+                        });
+            
+            
+  });
+
+  $("#jeans").click(function(){
+     // $("#product").show();
+     $("#TS").hide();
+      $("#S").hide();
+      $("#users").hide();
+      $("#J").show();
+      
+      
+      var srno1=0;
+      $("#add_jeans").children().next().children().remove();
+        fetch("./catproduct.json")
+        .then((apidata)=>{
+                        console.log(apidata);
+                        return apidata.json();
+                        }).then((actualdata) =>{
+                
+                 for(let x in actualdata)
+                    { 
+                      if(x=="catid_3")
+                      {
+                        for(let y in actualdata.catid_3)
+                        {
+                          srno1++;
+                          $("#add_jeans").append("<tr><td>"+srno1+"</td><td>"+actualdata.catid_3[y].pname+"</td><td>"+'₹'+ actualdata.catid_3[y].price + "</td><td>"+ actualdata.catid_3[y].quantity + "</td>");
+                        }
+                      }
+                  
+                    }
+
+                    
+                        }).catch((error) =>{
+                            console.log(error);
+                        });
+            
+            
+  });
+
+    $("#signout").click(function(){
+      var session_var = sessionStorage.getItem("logout");
+  if(session_var=="normal")
+  {
+    sessionStorage.removeItem("logout");
+    window.location.href = "index.html";
+     return false;
+  }
+  else if(session_var=="google")
+  {
+      alert(session_var);
+    sessionStorage.removeItem("logout");
+    
+     signOut_google();
+  }
+  else if(session_var=="facebook")
+  {
+      
+      alert(session_var);
+      sessionStorage.removeItem("logout");
+      fbLogout();
+  }
+ 
+  else{
+    alert("no session created");
+  }
+    });
+});
+</script>
+</html>

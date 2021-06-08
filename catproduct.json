@@ -1,0 +1,108 @@
+﻿{
+  
+    
+    
+  
+    "catid_1": [
+      
+        {
+          "pname": "Stylish T-Shirt",
+          "price": 499,
+          "quantity":4
+        },
+         {
+          "pname": "Casual T-Shirt",
+          "price": 699,
+          "quantity":4
+        },
+         {
+          "pname": "Full SleeveT-Shirt",
+          "price": 599,
+          "quantity":4
+        },
+        {
+          "pname": "Linen Italy Brand T-Shirt",
+          "price": 999,
+          "quantity":4
+          
+        },
+        {
+          "pname": "Free-Fire T-Shirt",
+          "price": 399,
+          "quantity":4
+        },
+      {
+        "pname": "Plain white T-Shirt",
+        "price": 399,
+        "quantity":4
+      }
+     
+      
+    ],
+    
+    "catid_2":[
+      {
+        "pname": "Formal Shirt",
+        "price": 599,
+        "quantity":4
+      },
+       {
+        "pname": "Casual Shirt",
+        "price": 399,
+        "quantity":4
+      },
+       {
+        "pname": "Compass Blue Shirt",
+        "price": 699,
+        "quantity":4
+      },
+       {
+        "pname": "Yello Checked Shirt",
+        "price": 599,
+        "quantity":4
+      },
+       {
+        "pname": "Casual White Shirt",
+        "price": 999,
+        "quantity":4    
+        },
+       {
+        "pname": "Casual Shirt",
+        "price": 399,
+        "quantity":4
+      }
+    ], 
+    "catid_3": [
+      {
+        "pname": "Jeans",
+        "price": 900,
+        "quantity":4
+      },
+       {
+        "pname": "Black Jeans",
+        "price": 799,
+        "quantity":4
+      },
+     {
+        "pname": "Hash Jeans",
+        "price": 1099,
+        "quantity":4
+      },
+       {
+        "pname": "lightblue Jeans",
+        "price": 1299,
+        "quantity":4
+      },
+      {
+        "pname": "Plain Blue Jeans",
+        "price": 999,
+        "quantity":4
+      },
+     {
+        "pname": "Regular fit Jeans",
+        "price": 1599,
+        "quantity":4
+      }
+    ]
+  
+}
